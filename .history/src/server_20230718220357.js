@@ -12,8 +12,7 @@ app.get("/*", (req, res) => res.redirect("/"));
 
 const handleListen = () => console.log(`Listening on http://localhost:3000`);
 
-// const server = http.createServer(app);
-const server = app.listen(3000, handleListen);
+const server = http.createServer(app);
 
 const wss = new WebSocket.Server({ server });
 
@@ -21,13 +20,6 @@ function handleConnection(socket) {
   console.log(socket);
 }
 
-wss.on("connection", (socket) => {
-  console.log("Connected to Server");
-  socket.on("close", () => console.log("disconnected from the Browser"));
-  socket.on("message", (message) => {
-    console.log(message.toString("utf8"));
-  });
-  socket.send("hello");
-});
+wss.on("connection", handleConnection);
 
-// app.listen(3000, handleListen);
+app.listen(3000, handleListen);

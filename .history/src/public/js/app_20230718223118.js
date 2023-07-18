@@ -11,7 +11,3 @@ socket.addEventListener("message", (message) => {
 socket.addEventListener("close", () => {
   console.log("Disconnected from server");
 });
-
-setTimeout(() => {
-  socket.send("hello from the Browser");
-}, 10000);

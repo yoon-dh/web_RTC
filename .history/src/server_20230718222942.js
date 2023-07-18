@@ -24,9 +24,6 @@ function handleConnection(socket) {
 wss.on("connection", (socket) => {
   console.log("Connected to Server");
   socket.on("close", () => console.log("disconnected from the Browser"));
-  socket.on("message", (message) => {
-    console.log(message.toString("utf8"));
-  });
   socket.send("hello");
 });
 
