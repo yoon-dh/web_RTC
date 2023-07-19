@@ -17,14 +17,10 @@ const server = app.listen(3000, handleListen);
 
 const wss = new WebSocket.Server({ server });
 
-const sockets = [];
-
 wss.on("connection", (socket) => {
-  sockets.push(socket);
   console.log("Connected to Server");
   socket.on("close", () => console.log("disconnected from the Browser"));
   socket.on("message", (message) => {
-    sockets.forEach((aSocket) => aSocket.send(message));
     socket.send(message.toString());
   });
 });

@@ -21,9 +21,7 @@ setTimeout(() => {
 function handleSubmit(event) {
   event.preventDefault();
   const input = messageForm.querySelector("input");
-
-  socket.send(input.value);
-  input.value = "";
+  console.log(input.value);
 }
 
 messageForm.addEventListener("submit", handleSubmit);

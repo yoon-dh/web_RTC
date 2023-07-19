@@ -23,7 +23,6 @@ function handleSubmit(event) {
   const input = messageForm.querySelector("input");
 
   socket.send(input.value);
-  input.value = "";
 }
 
 messageForm.addEventListener("submit", handleSubmit);
